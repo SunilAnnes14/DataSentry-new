@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+/* DataSentry - dark-only console. Near-black surfaces, cyan/teal accent.
+   Chart series use steps validated against the card surface #121417. */
+@theme {
+  --color-ink-950: #050607;
+  --color-ink-900: #08090b;
+  --color-ink-850: #0d0f12;
+  --color-ink-800: #111316;
+  --color-ink-700: #181b1f;
+  --color-ink-600: #212429;
+  --color-ink-500: #2e3238;
+
+  --color-cyan-accent: #5ee2e6;
+  --color-teal-deep: #154a53;
+  --color-teal-soft: #c9fbfc;
+
+  --color-text-primary: #eef1f4;
+  --color-text-secondary: #a7adb5;
+  --color-text-muted: #6c727b;
+
+  --color-good: #0ca30c;
+  --color-good-text: #4ade80;
+  --color-warning: #fab219;
+  --color-critical: #d03b3b;
+  --color-critical-text: #f87171;
+
+  /* categorical (validated order: teal, orange, violet, amber) */
+  --color-series-1: #199e9e;
+  --color-series-2: #d95926;
+  --color-series-3: #9085e9;
+  --color-series-4: #c98500;
+
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-ink-900);
+  background-image:
+    radial-gradient(900px 420px at 50% -120px, rgba(94, 226, 230, 0.07), transparent 70%);
+  background-attachment: fixed;
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.panel {
+  background: var(--color-ink-800);
+  border: 1px solid var(--color-ink-600);
+  border-radius: 16px;
+}
+
+.glass {
+  background:
+    radial-gradient(600px 220px at 85% 0%, rgba(94, 226, 230, 0.10), transparent 70%),
+    var(--color-ink-800);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.pulse-dot { animation: pulse-dot 1.4s ease-in-out infinite; }
+
+@keyframes flow {
+  to { stroke-dashoffset: -20; }
+}
+.flow-line { stroke-dasharray: 4 6; animation: flow 0.9s linear infinite; }
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
+}
+.fade-in { animation: fade-in 0.25s ease-out; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-dot, .flow-line, .fade-in { animation: none; }
+}
+
+select {
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: var(--color-ink-500); border-radius: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+.recharts-cartesian-grid line { stroke: var(--color-ink-600); }
+.recharts-text { fill: var(--color-text-muted); font-size: 11px; }

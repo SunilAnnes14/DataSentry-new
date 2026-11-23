@@ -1,0 +1,89 @@
+{
+  "experiment_id": "centralized-20261114-234600-f4baee",
+  "mode": "centralized",
+  "config": {
+    "mode": "centralized",
+    "rounds": 3,
+    "local_epochs": 2,
+    "batch_size": 16,
+    "learning_rate": 0.001,
+    "seed": 42,
+    "partition": "dirichlet",
+    "dirichlet_alpha": 2.0,
+    "defense_enabled": true,
+    "trust_alpha": 0.5,
+    "attack": {
+      "enabled": true,
+      "target_client": "Hospital Delta",
+      "attack_type": "label_flip_scaled",
+      "flip_rate": 1.0,
+      "strength": 3.0
+    },
+    "security": {
+      "accept_threshold": 0.4,
+      "reject_threshold": 0.7,
+      "suspicious_policy": "downweight",
+      "suspicious_weight": 0.5,
+      "mad_relative_floor": 0.15,
+      "z_soft": 1.5,
+      "z_hard": 5.0,
+      "if_min_history": 6,
+      "if_escalation_threshold": 0.8,
+      "if_corroboration_risk": 0.25
+    }
+  },
+  "initial_metrics": {
+    "accuracy": 0.40350877192982454,
+    "precision": 0.19047619047619047,
+    "recall": 0.19047619047619047,
+    "f1": 0.19047619047619047,
+    "loss": 0.7106255888938904
+  },
+  "final_metrics": {
+    "accuracy": 0.9649122807017544,
+    "precision": 0.9523809523809523,
+    "recall": 0.9523809523809523,
+    "f1": 0.9523809523809523,
+    "loss": 0.08722016215324402
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "metrics": {
+        "accuracy": 0.9385964912280702,
+        "precision": 0.926829268292683,
+        "recall": 0.9047619047619048,
+        "f1": 0.9156626506024096,
+        "loss": 0.18855789303779602
+      },
+      "train_loss": 0.2815380251407623,
+      "global_hash": "0xeb8cca0359d511b63123ab34f22e4a0b3a8e7ed26e852a3e402808a7de35b7b2"
+    },
+    {
+      "round": 2,
+      "metrics": {
+        "accuracy": 0.956140350877193,
+        "precision": 0.9512195121951219,
+        "recall": 0.9285714285714286,
+        "f1": 0.9397590361445783,
+        "loss": 0.09844881296157837
+      },
+      "train_loss": 0.08166763827204704,
+      "global_hash": "0xda4e871a784418608957f0f448772e2a4383d4296f9bf406d0c719a8cbdb111a"
+    },
+    {
+      "round": 3,
+      "metrics": {
+        "accuracy": 0.9649122807017544,
+        "precision": 0.9523809523809523,
+        "recall": 0.9523809523809523,
+        "f1": 0.9523809523809523,
+        "loss": 0.08722016215324402
+      },
+      "train_loss": 0.05294972000643611,
+      "global_hash": "0xf4af04ac28176d30e5774a1ffae21fb5a44f82b88ef906c47acf47bfa50d7d1a"
+    }
+  ],
+  "final_global_hash": "0xf4af04ac28176d30e5774a1ffae21fb5a44f82b88ef906c47acf47bfa50d7d1a",
+  "duration_seconds": 0.611
+}

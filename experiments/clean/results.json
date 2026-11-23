@@ -1,0 +1,635 @@
+{
+  "experiment_id": "clean-20261114-234601-30fe99",
+  "mode": "clean",
+  "config": {
+    "mode": "clean",
+    "rounds": 3,
+    "local_epochs": 2,
+    "batch_size": 16,
+    "learning_rate": 0.001,
+    "seed": 42,
+    "partition": "dirichlet",
+    "dirichlet_alpha": 2.0,
+    "defense_enabled": false,
+    "trust_alpha": 0.5,
+    "attack": {
+      "enabled": false,
+      "target_client": "Hospital Delta",
+      "attack_type": "label_flip_scaled",
+      "flip_rate": 1.0,
+      "strength": 3.0
+    },
+    "security": {
+      "accept_threshold": 0.4,
+      "reject_threshold": 0.7,
+      "suspicious_policy": "downweight",
+      "suspicious_weight": 0.5,
+      "mad_relative_floor": 0.15,
+      "z_soft": 1.5,
+      "z_hard": 5.0,
+      "if_min_history": 6,
+      "if_escalation_threshold": 0.8,
+      "if_corroboration_risk": 0.25
+    }
+  },
+  "initial_metrics": {
+    "accuracy": 0.40350877192982454,
+    "precision": 0.19047619047619047,
+    "recall": 0.19047619047619047,
+    "f1": 0.19047619047619047,
+    "loss": 0.7106255888938904
+  },
+  "final_metrics": {
+    "accuracy": 0.9385964912280702,
+    "precision": 0.926829268292683,
+    "recall": 0.9047619047619048,
+    "f1": 0.9156626506024096,
+    "loss": 0.1733376383781433
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "metrics": {
+        "accuracy": 0.9298245614035088,
+        "precision": 0.925,
+        "recall": 0.8809523809523809,
+        "f1": 0.9024390243902439,
+        "loss": 0.5378469824790955
+      },
+      "included": [
+        "Hospital Alpha",
+        "Hospital Beta",
+        "Hospital Gamma",
+        "Hospital Delta"
+      ],
+      "excluded": [],
+      "effective_weights": {
+        "Hospital Alpha": 0.105,
+        "Hospital Beta": 0.1275,
+        "Hospital Gamma": 0.47,
+        "Hospital Delta": 0.2975
+      },
+      "global_hash_before": "0x388bff9c38062fd31d8fe54d1f8d1e5818d0ef6fb8e13ffea35a8a14f8e9774d",
+      "global_hash": "0x4ecc28050ec0c5c579d32a897e4219bf3bc707fe5ff0419d6093d0a4180a9b35",
+      "train_loss": 0.607798939046704,
+      "analyses": [
+        {
+          "client": "Hospital Alpha",
+          "l2_norm": 0.29523894035518145,
+          "norm_per_step": 0.04920649005919691,
+          "local_steps": 6,
+          "norm_z": 1.4927672461005532,
+          "cosine_similarity": 0.8312056093665641,
+          "weight_deviation": 0.02747506051602248,
+          "validation_loss": 0.652946412563324,
+          "validation_loss_baseline": 0.6106287837028503,
+          "norm_anomaly": 0.0,
+          "cosine_disagreement": 0.0,
+          "deviation_score": 0.0,
+          "validation_impact": 0.12942681651001264,
+          "isolation_score": null,
+          "detector_mode": "rule-based (warm-up)",
+          "risk_score": 0.0194,
+          "decision": "ACCEPT",
+          "aggregation_weight": 1.0,
+          "explanation": [
+            "Risk 0.019 < accept threshold 0.40: accepted.",
+            "Update is consistent with peer consensus on all monitored signals."
+          ]
+        },
+        {
+          "client": "Hospital Beta",
+          "l2_norm": 0.3175284656324172,
+          "norm_per_step": 0.03969105820405215,
+          "local_steps": 8,
+          "norm_z": -0.08508431941630663,
+          "cosine_similarity": 0.7799556012872912,
+          "weight_deviation": 0.02675200123385146,
+          "validation_loss": 0.6457937955856323,
+          "validation_loss_baseline": 0.6106287837028503,
+          "norm_anomaly": 0.0,
+          "cosine_disagreement": 0.0,
+          "deviation_score": 0.0,
+          "validation_impact": 0.10879107734865856,
+          "isolation_score": null,
+          "detector_mode": "rule-based (warm-up)",
+          "risk_score": 0.0163,
+          "decision": "ACCEPT",
+          "aggregation_weight": 1.0,
+          "explanation": [
+            "Risk 0.016 < accept threshold 0.40: accepted.",
+            "Update is consistent with peer consensus on all monitored signals."
+          ]
+        },
+        {
+          "client": "Hospital Gamma",
+          "l2_norm": 0.901223466352737,
+          "norm_per_step": 0.037550977764697374,
+          "local_steps": 24,
+          "norm_z": -0.4399530550630477,
+          "cosine_similarity": 0.8845805769225517,
+          "weight_deviation": 0.019690721215287078,
+          "validation_loss": 0.49880528450012207,
+          "validation_loss_baseline": 0.6106287837028503,
+          "norm_anomaly": 0.0,
+          "cosine_disagreement": 0.0,
+          "deviation_score": 0.0,
+          "validation_impact": 0.0,
+          "isolation_score": null,
+          "detector_mode": "rule-based (warm-up)",
+          "risk_score": 0.0,
+          "decision": "ACCEPT",
+          "aggregation_weight": 1.0,
+          "explanation": [
+            "Risk 0.000 < accept threshold 0.40: accepted.",
+            "Update is consistent with peer consensus on all monitored signals."
+          ]
+        },
+        {
+          "client": "Hospital Delta",
+          "l2_norm": 0.6514765045335182,
+          "norm_per_step": 0.04071728153334489,
+          "local_steps": 16,
+          "norm_z": 0.08508431941630663,
+          "cosine_similarity": 0.87072043941783,
+          "weight_deviation": 0.020756411934347192,
+          "validation_loss": 0.5754637718200684,
+          "validation_loss_baseline": 0.6106287837028503,
+          "norm_anomaly": 0.0,
+          "cosine_disagreement": 0.0,
+          "deviation_score": 0.0,
+          "validation_impact": 0.0,
+          "isolation_score": null,
+          "detector_mode": "rule-based (warm-up)",
+          "risk_score": 0.0,
+          "decision": "ACCEPT",
+          "aggregation_weight": 1.0,
+          "explanation": [
+            "Risk 0.000 < accept threshold 0.40: accepted.",
+            "Update is consistent with peer consensus on all monitored signals."
+          ]
+        }
+      ],
+      "updates": [
+        {
+          "client": "Hospital Alpha",
+          "update_hash": "0xc6f9ec143a23328e9fadd6ace07305996f96818d35a39a5d2a81d5c7f23b5d95",
+          "num_samples": 42,
+          "is_malicious": false,
+          "local_accuracy": 0.9523809552192688,
+          "epoch_losses": [
+            0.7010875372659593,
+            0.6584249763261705
+          ],
+          "attack_details": {}
+        },
+        {
+          "client": "Hospital Beta",
+          "update_hash": "0xa03fe194690ca7d8cc97993504c2f4f4fee1ffd8f1308e0c92fc803fcad7a1fd",
+          "num_samples": 51,
+          "is_malicious": false,
+          "local_accuracy": 0.9215686321258545,
+          "epoch_losses": [
+            0.6923060791165221,
+            0.6520958706444385
+          ],
+          "attack_details": {}
+        },
+        {
+          "client": "Hospital Gamma",
+          "update_hash": "0x75b39744308e06f53806f0a20ac4832061dc102b0155b4738917fb17e3683300",
+          "num_samples": 188,
+          "is_malicious": false,
+          "local_accuracy": 0.957446813583374,
+          "epoch_losses": [
+            0.6570055624271961,
+            0.5290750506076407
+          ],
+          "attack_details": {}
+        },
+        {
+          "client": "Hospital Delta",
+          "update_hash": "0x8cb03029a6518b7379aae36deb9641f4f52ee41f868688ca9fc0dea5fbb1de86",
+          "num_samples": 119,
+          "is_malicious": false,
+          "local_accuracy": 0.9495798349380493,
+          "epoch_losses": [
+            0.674100878358889,
+            0.5915998586085665
+          ],
+          "attack_details": {}
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "metrics": {
+        "accuracy": 0.9385964912280702,
+        "precision": 0.9487179487179487,
+        "recall": 0.8809523809523809,
+        "f1": 0.9135802469135802,
+        "loss": 0.31973403692245483
+      },
+      "included": [
+        "Hospital Alpha",
+        "Hospital Beta",
+        "Hospital Gamma",
+        "Hospital Delta"
+      ],
+      "excluded": [],
+      "effective_weights": {
+        "Hospital Alpha": 0.105,
+        "Hospital Beta": 0.1275,
+        "Hospital Gamma": 0.47,
+        "Hospital Delta": 0.2975
+      },
+      "global_hash_before": "0x4ecc28050ec0c5c579d32a897e4219bf3bc707fe5ff0419d6093d0a4180a9b35",
+      "global_hash": "0x9af9a90b6daa737695850abd51b727c7f7ee2308daf56da441915dbb253fd27b",
+      "train_loss": 0.40028902743251715,
+      "analyses": [
+        {
+          "client": "Hospital Alpha",
+          "l2_norm": 0.2850276035918848,
+          "norm_per_step": 0.047504600598647466,
+          "local_steps": 6,
+          "norm_z": 0.69087836686396,
+          "cosine_similarity": 0.8953092098410361,
+          "weight_deviation": 0.021173657502982293,
+          "validation_loss": 0.4932868182659149,
+          "validation_loss_baseline": 0.43085741996765137,
+          "norm_anomaly": 0.0,
+          "cosine_disagreement": 0.0,
+          "deviation_score": 0.0,
+          "validation_impact": 0.25158036599104205,
+          "isolation_score": 0.5531788353211282,
+          "detector_mode": "hybrid",
+          "risk_score": 0.0377,
+          "decision": "ACCEPT",
+          "aggregation_weight": 1.0,
+          "explanation": [
+            "Risk 0.038 < accept threshold 0.40: accepted.",
+            "Update is consistent with peer consensus on all monitored signals."
+          ]
+        },
+        {
+          "client": "Hospital Beta",
+          "l2_norm": 0.32727986010454563,
+          "norm_per_step": 0.040909982513068203,
+          "local_steps": 8,
+          "norm_z": -0.3305005929028631,
+          "cosine_similarity": 0.8454717345369291,
+          "weight_deviation": 0.023590217621551942,
+          "validation_loss": 0.4792737662792206,
+          "validation_loss_baseline": 0.43085741996765137,
+          "norm_anomaly": 0.0,
+          "cosine_disagreement": 0.0,
+          "deviation_score": 0.0,
+          "validation_impact": 0.20127946956148302,
+          "isolation_score": 0.2959484822608096,
+          "detector_mode": "hybrid",
+          "risk_score": 0.0302,
+          "decision": "ACCEPT",
+          "aggregation_weight": 1.0,
+          "explanation": [
+            "Risk 0.030 < accept threshold 0.40: accepted.",
+            "Update is consistent with peer consensus on all monitored signals."
+          ]
+        },
+        {
+          "client": "Hospital Gamma",
+          "l2_norm": 1.0153283747980222,
+          "norm_per_step": 0.04230534894991759,
+          "local_steps": 24,
+          "norm_z": -0.11438528474281885,
+          "cosine_similarity": 0.9284535076667119,
+          "weight_deviation": 0.01621850693563891,
+          "validation_loss": 0.3067934215068817,
+          "validation_loss_baseline": 0.43085741996765137,
+          "norm_anomaly": 0.0,
+          "cosine_disagreement": 0.0,
+          "deviation_score": 0.0,
+          "validation_impact": 0.0,
+          "isolation_score": 0.0,
+          "detector_mode": "hybrid",
+          "risk_score": 0.0,
+          "decision": "ACCEPT",
+          "aggregation_weight": 1.0,
+          "explanation": [
+            "Risk 0.000 < accept threshold 0.40: accepted.",
+            "Update is consistent with peer consensus on all monitored signals."
+          ]
+        },
+        {
+          "client": "Hospital Delta",
+          "l2_norm": 0.7005188021218153,
+          "norm_per_step": 0.043782425132613455,
+          "local_steps": 16,
+          "norm_z": 0.11438528474281885,
+          "cosine_similarity": 0.9091580593829248,
+          "weight_deviation": 0.018487601598074763,
+          "validation_loss": 0.38244107365608215,
+          "validation_loss_baseline": 0.43085741996765137,
+          "norm_anomaly": 0.0,
+          "cosine_disagreement": 0.0,
+          "deviation_score": 0.0,
+          "validation_impact": 0.0,
+          "isolation_score": 0.0,
+          "detector_mode": "hybrid",
+          "risk_score": 0.0,
+          "decision": "ACCEPT",
+          "aggregation_weight": 1.0,
+          "explanation": [
+            "Risk 0.000 < accept threshold 0.40: accepted.",
+            "Update is consistent with peer consensus on all monitored signals."
+          ]
+        }
+      ],
+      "updates": [
+        {
+          "client": "Hospital Alpha",
+          "update_hash": "0xf0b431fdfb4452303a415bd88383f27b450db1fdf8329eae5bbc92d66cb4b762",
+          "num_samples": 42,
+          "is_malicious": false,
+          "local_accuracy": 0.976190447807312,
+          "epoch_losses": [
+            0.4989202618598938,
+            0.4502624982879275
+          ],
+          "attack_details": {}
+        },
+        {
+          "client": "Hospital Beta",
+          "update_hash": "0x12c40f48b4803d9c49097564b00a91b9968542f884d4e86ed1e7f196a281fa46",
+          "num_samples": 51,
+          "is_malicious": false,
+          "local_accuracy": 0.9215686321258545,
+          "epoch_losses": [
+            0.5297872973423378,
+            0.48143887519836426
+          ],
+          "attack_details": {}
+        },
+        {
+          "client": "Hospital Gamma",
+          "update_hash": "0xad7c4375c1d27661216bc30db45608a7f121189410f6424439f2237cdc820144",
+          "num_samples": 188,
+          "is_malicious": false,
+          "local_accuracy": 0.957446813583374,
+          "epoch_losses": [
+            0.44953305670555604,
+            0.2863341420888901
+          ],
+          "attack_details": {}
+        },
+        {
+          "client": "Hospital Delta",
+          "update_hash": "0x12c8fc56c80143e4bf89c383b673780e223a4b9d20502a5dbfd864b7d57af380",
+          "num_samples": 119,
+          "is_malicious": false,
+          "local_accuracy": 0.9579831957817078,
+          "epoch_losses": [
+            0.4917434366310344,
+            0.38312059415488686
+          ],
+          "attack_details": {}
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "metrics": {
+        "accuracy": 0.9385964912280702,
+        "precision": 0.926829268292683,
+        "recall": 0.9047619047619048,
+        "f1": 0.9156626506024096,
+        "loss": 0.1733376383781433
+      },
+      "included": [
+        "Hospital Alpha",
+        "Hospital Beta",
+        "Hospital Gamma",
+        "Hospital Delta"
+      ],
+      "excluded": [],
+      "effective_weights": {
+        "Hospital Alpha": 0.105,
+        "Hospital Beta": 0.1275,
+        "Hospital Gamma": 0.47,
+        "Hospital Delta": 0.2975
+      },
+      "global_hash_before": "0x9af9a90b6daa737695850abd51b727c7f7ee2308daf56da441915dbb253fd27b",
+      "global_hash": "0xc6540712fd819fea914a973793c954ff074cec3bedbde93032abd6439bc64798",
+      "train_loss": 0.20176620176636467,
+      "analyses": [
+        {
+          "client": "Hospital Alpha",
+          "l2_norm": 0.2969563880802884,
+          "norm_per_step": 0.04949273134671473,
+          "local_steps": 6,
+          "norm_z": 1.1379855979379636,
+          "cosine_similarity": 0.8596464200353938,
+          "weight_deviation": 0.025397289854176275,
+          "validation_loss": 0.30549827218055725,
+          "validation_loss_baseline": 0.2617577388882637,
+          "norm_anomaly": 0.0,
+          "cosine_disagreement": 0.0,
+          "deviation_score": 0.0,
+          "validation_impact": 0.28409387294360766,
+          "isolation_score": 0.6103508232001071,
+          "detector_mode": "hybrid",
+          "risk_score": 0.0426,
+          "decision": "ACCEPT",
+          "aggregation_weight": 1.0,
+          "explanation": [
+            "Risk 0.043 < accept threshold 0.40: accepted.",
+            "Update is consistent with peer consensus on all monitored signals."
+          ]
+        },
+        {
+          "client": "Hospital Beta",
+          "l2_norm": 0.34757730108470775,
+          "norm_per_step": 0.04344716263558847,
+          "local_steps": 8,
+          "norm_z": 0.18464234432812884,
+          "cosine_similarity": 0.8549369192652326,
+          "weight_deviation": 0.022962830778610836,
+          "validation_loss": 0.2897140383720398,
+          "validation_loss_baseline": 0.2617577388882637,
+          "norm_anomaly": 0.0,
+          "cosine_disagreement": 0.0,
+          "deviation_score": 0.0,
+          "validation_impact": 0.1923321468984015,
+          "isolation_score": 0.0865786651593865,
+          "detector_mode": "hybrid",
+          "risk_score": 0.0288,
+          "decision": "ACCEPT",
+          "aggregation_weight": 1.0,
+          "explanation": [
+            "Risk 0.029 < accept threshold 0.40: accepted.",
+            "Update is consistent with peer consensus on all monitored signals."
+          ]
+        },
+        {
+          "client": "Hospital Gamma",
+          "l2_norm": 0.9184525976243078,
+          "norm_per_step": 0.038268858234346156,
+          "local_steps": 24,
+          "norm_z": -0.6319394864228755,
+          "cosine_similarity": 0.9096670331819626,
+          "weight_deviation": 0.018271725094879652,
+          "validation_loss": 0.22647370398044586,
+          "validation_loss_baseline": 0.2617577388882637,
+          "norm_anomaly": 0.0,
+          "cosine_disagreement": 0.0,
+          "deviation_score": 0.0,
+          "validation_impact": 0.0,
+          "isolation_score": 0.0,
+          "detector_mode": "hybrid",
+          "risk_score": 0.0,
+          "decision": "ACCEPT",
+          "aggregation_weight": 1.0,
+          "explanation": [
+            "Risk 0.000 < accept threshold 0.40: accepted.",
+            "Update is consistent with peer consensus on all monitored signals."
+          ]
+        },
+        {
+          "client": "Hospital Delta",
+          "l2_norm": 0.6576858570846241,
+          "norm_per_step": 0.04110536606778901,
+          "local_steps": 16,
+          "norm_z": -0.18464234432812993,
+          "cosine_similarity": 0.8662765872902933,
+          "weight_deviation": 0.021756952535497403,
+          "validation_loss": 0.2338014394044876,
+          "validation_loss_baseline": 0.2617577388882637,
+          "norm_anomaly": 0.0,
+          "cosine_disagreement": 0.0,
+          "deviation_score": 0.0,
+          "validation_impact": 0.0,
+          "isolation_score": 0.0,
+          "detector_mode": "hybrid",
+          "risk_score": 0.0,
+          "decision": "ACCEPT",
+          "aggregation_weight": 1.0,
+          "explanation": [
+            "Risk 0.000 < accept threshold 0.40: accepted.",
+            "Update is consistent with peer consensus on all monitored signals."
+          ]
+        }
+      ],
+      "updates": [
+        {
+          "client": "Hospital Alpha",
+          "update_hash": "0xdcc3dfa06ac9f8ac106cd73e3fa6a1e0f9efced16f03a23d51cee6d56d7eec67",
+          "num_samples": 42,
+          "is_malicious": false,
+          "local_accuracy": 0.976190447807312,
+          "epoch_losses": [
+            0.249378502368927,
+            0.2065483374255044
+          ],
+          "attack_details": {}
+        },
+        {
+          "client": "Hospital Beta",
+          "update_hash": "0x82a89007097cdb7d6456f0241304cfa285fc00515d1273d99338d972f002b045",
+          "num_samples": 51,
+          "is_malicious": false,
+          "local_accuracy": 0.9215686321258545,
+          "epoch_losses": [
+            0.318565322487962,
+            0.27252903931281147
+          ],
+          "attack_details": {}
+        },
+        {
+          "client": "Hospital Gamma",
+          "update_hash": "0xb94a9a2563210c9192837c9ed826f30de0a1fc2b8f9527a73af71dba952484e0",
+          "num_samples": 188,
+          "is_malicious": false,
+          "local_accuracy": 0.957446813583374,
+          "epoch_losses": [
+            0.2245179715942829,
+            0.1337227280786697
+          ],
+          "attack_details": {}
+        },
+        {
+          "client": "Hospital Delta",
+          "update_hash": "0xa9eeca1909fb1775f9a0b03640e70a8fa3b5c727253ab3b64f6ed6fe2c7c9d4d",
+          "num_samples": 119,
+          "is_malicious": false,
+          "local_accuracy": 0.9579831957817078,
+          "epoch_losses": [
+            0.2747133794952841,
+            0.19426470224847311
+          ],
+          "attack_details": {}
+        }
+      ]
+    }
+  ],
+  "trust": {
+    "Hospital Alpha": {
+      "trust": 90.44,
+      "ema_risk": 0.0956,
+      "observations": 3,
+      "accepted": 3,
+      "suspicious": 0,
+      "rejected": 0,
+      "history": [
+        74.03,
+        85.13,
+        90.44
+      ]
+    },
+    "Hospital Beta": {
+      "trust": 91.35,
+      "ema_risk": 0.0865,
+      "observations": 3,
+      "accepted": 3,
+      "suspicious": 0,
+      "rejected": 0,
+      "history": [
+        74.19,
+        85.58,
+        91.35
+      ]
+    },
+    "Hospital Gamma": {
+      "trust": 93.75,
+      "ema_risk": 0.0625,
+      "observations": 3,
+      "accepted": 3,
+      "suspicious": 0,
+      "rejected": 0,
+      "history": [
+        75.0,
+        87.5,
+        93.75
+      ]
+    },
+    "Hospital Delta": {
+      "trust": 93.75,
+      "ema_risk": 0.0625,
+      "observations": 3,
+      "accepted": 3,
+      "suspicious": 0,
+      "rejected": 0,
+      "history": [
+        75.0,
+        87.5,
+        93.75
+      ]
+    }
+  },
+  "detection": {
+    "true_positives": 0,
+    "false_positives": 0,
+    "true_negatives": 12,
+    "false_negatives": 0
+  },
+  "final_global_hash": "0xc6540712fd819fea914a973793c954ff074cec3bedbde93032abd6439bc64798",
+  "duration_seconds": 5.64
+}

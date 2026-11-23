@@ -1,0 +1,29 @@
+# Convenience stack: local chain + API + dashboard.
+# NOTE: not exercised in the hackathon environment (Docker unavailable there);
+# the manual commands in README.md are the tested path.
+services:
+  blockchain:
+    build: ./blockchain
+    ports: ["8545:8545"]
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      DATASENTRY_RPC_URL: http://blockchain:8545
+      DATASENTRY_PUBLIC_RPC_URL: http://localhost:8545
+      DATASENTRY_CORS_ORIGINS: http://localhost:5173
+    ports: ["8000:8000"]
+    volumes: ["backend-data:/app/backend/data"]
+    depends_on: [blockchain]
+
+  frontend:
+    build: ./frontend
+    environment:
+      VITE_API_URL: http://localhost:8000/api
+    ports: ["5173:5173"]
+    depends_on: [backend]
+
+volumes:
+  backend-data:
